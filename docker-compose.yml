@@ -1,0 +1,36 @@
+# version of  Docker Compose file
+version: "3.8"
+
+services:
+  # book_catalog service
+  book_cat:
+  
+    build:
+
+      context: ./book_catalog
+
+      dockerfile: Dockerfile
+
+    ports:
+      - "80:80"
+    # environment variables for the container
+    environment:
+      # DATABASE_URL environment variable for the PostgreSQL connection
+      - DATABASE_URL=postgresql://sit722part3_ej22_user:MfKbzju6x8WwCEFSPtm3u1VLALLS8Cjh@dpg-crok5723esus73c2ajog-a.oregon-postgres.render.com/sit722part3_ej22
+
+    
+
+  # Define the inventory_management service
+  management_invent:
+   
+    build:
+   
+      context: ./inventory_management
+
+      dockerfile: Dockerfile
+   
+    ports:
+      - "81:81"
+    # Define environment variables for container
+    environment:
+      - DATABASE_URL=postgresql://sit722part3_ej22_user:MfKbzju6x8WwCEFSPtm3u1VLALLS8Cjh@dpg-crok5723esus73c2ajog-a.oregon-postgres.render.com/sit722part3_ej22
